@@ -27,7 +27,9 @@ const Home: React.FC<IHomeProps> = ({ weatherStaticProp }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const response = await fetch("/api/location/1118370");
+  const response = await fetch(
+    "https://www.metaweather.com/api/location/766273"
+  );
   const data = await response.json();
   return {
     props: { weatherStaticProp: data },
