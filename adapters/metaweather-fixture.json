@@ -1,0 +1,165 @@
+{
+  "consolidated_weather": [
+    {
+      "id": 6203644136390656,
+      "weather_state_name": "Clear",
+      "weather_state_abbr": "c",
+      "wind_direction_compass": "SW",
+      "created": "2021-02-19T15:24:46.624506Z",
+      "applicable_date": "2021-02-20",
+      "min_temp": 3.92,
+      "max_temp": 17.53,
+      "the_temp": 13.365,
+      "wind_speed": 11.023617599878046,
+      "wind_direction": 224.6670094218673,
+      "air_pressure": 1009.0,
+      "humidity": 37,
+      "visibility": 15.397888829237255,
+      "predictability": 68
+    },
+    {
+      "id": 4940017311940608,
+      "weather_state_name": "Clear",
+      "weather_state_abbr": "c",
+      "wind_direction_compass": "SSW",
+      "created": "2021-02-19T15:24:49.712563Z",
+      "applicable_date": "2021-02-21",
+      "min_temp": 8.155,
+      "max_temp": 20.335,
+      "the_temp": 16.32,
+      "wind_speed": 5.603901457270872,
+      "wind_direction": 204.46825883045483,
+      "air_pressure": 1011.5,
+      "humidity": 46,
+      "visibility": 14.756323073252206,
+      "predictability": 68
+    },
+    {
+      "id": 6367495058358272,
+      "weather_state_name": "Clear",
+      "weather_state_abbr": "c",
+      "wind_direction_compass": "SSW",
+      "created": "2021-02-19T15:24:52.902342Z",
+      "applicable_date": "2021-02-22",
+      "min_temp": 8.765,
+      "max_temp": 20.21,
+      "the_temp": 17.685000000000002,
+      "wind_speed": 5.187185432378907,
+      "wind_direction": 196.07292198388518,
+      "air_pressure": 1009.0,
+      "humidity": 49,
+      "visibility": 14.56214457567804,
+      "predictability": 68
+    },
+    {
+      "id": 5420108689178624,
+      "weather_state_name": "Clear",
+      "weather_state_abbr": "c",
+      "wind_direction_compass": "NNW",
+      "created": "2021-02-19T15:24:55.534661Z",
+      "applicable_date": "2021-02-23",
+      "min_temp": 4.675000000000001,
+      "max_temp": 14.195,
+      "the_temp": 12.54,
+      "wind_speed": 12.522514025141176,
+      "wind_direction": 342.50158881750826,
+      "air_pressure": 1009.5,
+      "humidity": 31,
+      "visibility": 15.514395927781754,
+      "predictability": 68
+    },
+    {
+      "id": 6173428840136704,
+      "weather_state_name": "Heavy Cloud",
+      "weather_state_abbr": "hc",
+      "wind_direction_compass": "NNW",
+      "created": "2021-02-19T15:24:58.935188Z",
+      "applicable_date": "2021-02-24",
+      "min_temp": 2.705,
+      "max_temp": 10.945,
+      "the_temp": 7.53,
+      "wind_speed": 8.629931997136723,
+      "wind_direction": 337.5,
+      "air_pressure": 1021.0,
+      "humidity": 18,
+      "visibility": 9.999726596675416,
+      "predictability": 71
+    },
+    {
+      "id": 5081901757890560,
+      "weather_state_name": "Heavy Cloud",
+      "weather_state_abbr": "hc",
+      "wind_direction_compass": "ENE",
+      "created": "2021-02-19T15:25:01.632562Z",
+      "applicable_date": "2021-02-25",
+      "min_temp": 2.955,
+      "max_temp": 12.41,
+      "the_temp": 8.77,
+      "wind_speed": 3.075006164002227,
+      "wind_direction": 65.0,
+      "air_pressure": 1021.0,
+      "humidity": 32,
+      "visibility": 9.999726596675416,
+      "predictability": 71
+    }
+  ],
+  "time": "2021-02-20T02:42:34.683367+09:00",
+  "sun_rise": "2021-02-20T06:21:19.954176+09:00",
+  "sun_set": "2021-02-20T17:27:29.695688+09:00",
+  "timezone_name": "JST",
+  "parent": {
+    "title": "Japan",
+    "location_type": "Country",
+    "woeid": 23424856,
+    "latt_long": "37.487598,139.838287"
+  },
+  "sources": [
+    {
+      "title": "BBC",
+      "slug": "bbc",
+      "url": "http://www.bbc.co.uk/weather/",
+      "crawl_rate": 360
+    },
+    {
+      "title": "Forecast.io",
+      "slug": "forecast-io",
+      "url": "http://forecast.io/",
+      "crawl_rate": 480
+    },
+    {
+      "title": "HAMweather",
+      "slug": "hamweather",
+      "url": "http://www.hamweather.com/",
+      "crawl_rate": 360
+    },
+    {
+      "title": "Met Office",
+      "slug": "met-office",
+      "url": "http://www.metoffice.gov.uk/",
+      "crawl_rate": 180
+    },
+    {
+      "title": "OpenWeatherMap",
+      "slug": "openweathermap",
+      "url": "http://openweathermap.org/",
+      "crawl_rate": 360
+    },
+    {
+      "title": "Weather Underground",
+      "slug": "wunderground",
+      "url": "https://www.wunderground.com/?apiref=fc30dc3cd224e19b",
+      "crawl_rate": 720
+    },
+    {
+      "title": "World Weather Online",
+      "slug": "world-weather-online",
+      "url": "http://www.worldweatheronline.com/",
+      "crawl_rate": 360
+    }
+  ],
+  "title": "Tokyo",
+  "location_type": "City",
+  "woeid": 1118370,
+  "latt_long": "35.670479,139.740921",
+  "timezone": "Asia/Tokyo"
+}
