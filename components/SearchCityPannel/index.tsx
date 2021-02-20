@@ -25,7 +25,9 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
     lastSearches,
   ]);
 
-  async function handleSearch(): Promise<MetaWeatherSearchResponse> {
+  async function handleSearch(
+    searchText: string
+  ): Promise<MetaWeatherSearchResponse> {
     setLoading(true);
     try {
       const { data } = await axios.get<MetaWeatherSearchResponse[]>(
@@ -57,8 +59,9 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
       setOpenPannel(false);
     } catch (error) {
       console.log(error);
-    } finally {
+    } finally { 
       setLoading(false);
+      setSearchText("")
     }
   }
 
@@ -93,7 +96,9 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
           className={`${
             loading ? "bg-secondary animate-pulse" : ""
           } px-4 bg-blue-700 hover:bg-blue-900 transition`}
-          onClick={async () => getWeatherByWoeid(await handleSearch())}
+          onClick={async () =>
+            getWeatherByWoeid(await handleSearch(searchText))
+          }
           disabled={loading}
         >
           {loading ? "Loading" : "Search"}
@@ -111,7 +116,7 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
                 role="button"
                 onClick={async () => {
                   setSearchText(city);
-                  getWeatherByWoeid(await handleSearch());
+                  getWeatherByWoeid(await handleSearch(city));
                 }}
                 className="border bg-primary border-medium-gray text-medium-gray py-3 hover:border-light-gray hover:text-light-gray"
               >
