@@ -53,15 +53,20 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
     try {
       const response = await fetch(`/api/location/${woeid}`);
       const weather = await response.json();
+      const isNewWoeid = lastSearches.every(
+        ({ woeid: currentWoeid }) => currentWoeid !== woeid
+      );
 
-      setLastSearches((current) => [...current, { title, woeid }]);
+      setLastSearches((current) => {
+        return isNewWoeid ? [...current, { title, woeid }] : current;
+      });
       setWeather(weather);
       setOpenPannel(false);
     } catch (error) {
       console.log(error);
-    } finally { 
+    } finally {
       setLoading(false);
-      setSearchText("")
+      setSearchText("");
     }
   }
 
