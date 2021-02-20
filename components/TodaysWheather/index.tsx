@@ -27,6 +27,12 @@ export const TodaysWeather = () => {
           <button
             type="button"
             className="grid place-items-center p-1 bg-secondary rounded-full shadow-2xl h-10 w-10"
+            title="Unfortunately , this feature is not ready"
+            onClick={() =>
+              alert(
+                "Unfortunately, the location feature is not ready. Please, try again later."
+              )
+            }
           >
             <MdGpsFixed size={24} />
           </button>
