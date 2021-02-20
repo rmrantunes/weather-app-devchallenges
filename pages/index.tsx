@@ -27,7 +27,7 @@ const Home: React.FC<IHomeProps> = ({ weatherStaticProp }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const response = await fetch("http://localhost:3000/api/fixture");
+  const response = await fetch("/api/location/1118370");
   const data = await response.json();
   return {
     props: { weatherStaticProp: data },
