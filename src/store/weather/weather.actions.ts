@@ -4,6 +4,7 @@ import {
   MetaWeatherAPIResponse,
   MetaWeatherSearchResponse,
 } from "src/adapters/metaweather-api-definitions";
+import { UIActions } from "src/store/ui";
 
 export const weatherActionTypes = {
   SET_WEATHER: "weather/SET_WEATHER",
@@ -52,6 +53,7 @@ export const weatherActions = {
         );
         dispatch(weatherActions.SET_WEATHER(data));
         dispatch(weatherActions.SET_LAST_SEARCHES(payload));
+        dispatch(UIActions.CLOSE_SEARCH_PANNEL());
       } catch (error) {
         dispatch(weatherActions.SEARCH_WEATHER_ERROR(error.message));
       }
