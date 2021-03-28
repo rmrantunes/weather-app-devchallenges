@@ -1,5 +1,4 @@
 import React from "react";
-import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import { MdGpsFixed, MdKeyboardArrowDown, MdLocationOn } from "react-icons/md";
 import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
 import { SearchCityPannel } from "src/core/components/SearchCityPannel";
