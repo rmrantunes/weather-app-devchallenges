@@ -4,13 +4,13 @@ import { MdGpsFixed, MdKeyboardArrowDown, MdLocationOn } from "react-icons/md";
 import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
 import { SearchCityPannel } from "src/core/components/SearchCityPannel";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWeather, UIActions } from "src/store";
+import { selectIsCelcius, selectWeather, UIActions } from "src/store";
 
 export const TodaysWeather = () => {
   const { weather } = useSelector(selectWeather);
   const { consolidated_weather, title } = weather;
   const [todaysWeather] = consolidated_weather;
-  const { isCelcius } = useTemperatureMeasurementContext();
+  const isCelcius = useSelector(selectIsCelcius);
   const dispath = useDispatch();
 
   return (

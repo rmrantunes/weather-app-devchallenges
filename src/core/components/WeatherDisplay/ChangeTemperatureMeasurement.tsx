@@ -1,5 +1,6 @@
-import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsCelcius, UIActions } from "src/store";
 
 const toggleActive = (condition: boolean) => {
   return condition
@@ -8,10 +9,8 @@ const toggleActive = (condition: boolean) => {
 };
 
 export const ChangeTemperatureMeasurement = () => {
-  const {
-    isCelcius,
-    setCurrentMeasurement,
-  } = useTemperatureMeasurementContext();
+  const isCelcius = useSelector(selectIsCelcius);
+  const dispatch = useDispatch();
 
   return (
     <header className="flex justify-end">
@@ -22,7 +21,7 @@ export const ChangeTemperatureMeasurement = () => {
             isCelcius
           )} rounded-full font-bold grid place-items-center w-10 h-10`}
           title="Celcius"
-          onClick={() => setCurrentMeasurement("Celcius")}
+          onClick={() => dispatch(UIActions.SET_CURRENT_MEASUREMENT("Celcius"))}
         >
           ºC
         </button>
@@ -32,7 +31,9 @@ export const ChangeTemperatureMeasurement = () => {
             !isCelcius
           )} rounded-full font-bold grid place-items-center w-10 h-10`}
           title="Fahrenheit"
-          onClick={() => setCurrentMeasurement("Fahrenheit")}
+          onClick={() =>
+            dispatch(UIActions.SET_CURRENT_MEASUREMENT("Fahrenheit"))
+          }
         >
           ºF
         </button>
