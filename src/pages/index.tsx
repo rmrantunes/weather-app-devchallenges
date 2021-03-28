@@ -5,8 +5,6 @@ import { MetaWeatherAPIResponse } from "src/adapters/metaweather-api-definitions
 import { Layout } from "src/core/components/Layout";
 import { TodaysWeather } from "src/core/components/TodaysWheather";
 import { WeatherDisplay } from "src/core/components/WeatherDisplay";
-import { WeatherProvider } from "src/core/contexts/WeatherContext";
-import { TemperatureMeasurementProvider } from "src/core/contexts/TemperatureMeasurementContext";
 import { selectWeather, weatherActions } from "src/store";
 
 interface IHomeProps {
@@ -22,14 +20,10 @@ const Home: React.FC<IHomeProps> = ({ weatherStaticProp }) => {
 
   if (!weather) return null;
   return (
-    <WeatherProvider {...{ weatherStaticProp }}>
-      <Layout>
-        <TemperatureMeasurementProvider>
-          <TodaysWeather />
-          <WeatherDisplay />
-        </TemperatureMeasurementProvider>
-      </Layout>
-    </WeatherProvider>
+    <Layout>
+      <TodaysWeather />
+      <WeatherDisplay />
+    </Layout>
   );
 };
 
