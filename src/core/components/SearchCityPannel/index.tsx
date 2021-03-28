@@ -1,9 +1,8 @@
-import React, { useContext, useMemo, useState } from "react";
-import { MetaWeatherSearchResponse } from "src/adapters/metaweather-api-definitions";
-import { WeatherContext } from "src/core/contexts/WeatherContext";
+import React, { useEffect, useMemo, useState } from "react";
 import { cities } from "src/utils/searchCityHint";
 import { FiSearch, FiX } from "react-icons/fi";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { selectWeather, weatherActions } from "src/store";
 
 export interface ISearchCityPannel {
   openPannel: boolean;
@@ -15,59 +14,17 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
   setOpenPannel,
 }) => {
   const [searchText, setSearchText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [lastSearches, setLastSearches] = useState<MetaWeatherSearchResponse[]>(
-    []
-  );
-  const { setWeather } = useContext(WeatherContext);
-
-  const lastSearchesToDisplay = useMemo(() => lastSearches.reverse(), [
+  const { loading, lastSearches } = useSelector(selectWeather);
+  const dispatch = useDispatch();
+  const lastSearchesForHint = useMemo(() => lastSearches.reverse(), [
     lastSearches,
   ]);
 
-  async function handleSearch(
-    searchText: string
-  ): Promise<MetaWeatherSearchResponse> {
-    setLoading(true);
-    try {
-      const { data } = await axios.get<MetaWeatherSearchResponse[]>(
-        `/api/search/${searchText}`
-      );
-
-      if (!data || data.length === 0)
-        throw new Error("Digite uma outra cidade");
-
-      const [{ title, woeid }] = data;
-
-      return { title, woeid };
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function getWeatherByWoeid({
-    title,
-    woeid,
-  }: MetaWeatherSearchResponse) {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/location/${woeid}`);
-      const weather = await response.json();
-      const isNewWoeid = lastSearches.every(
-        ({ woeid: currentWoeid }) => currentWoeid !== woeid
-      );
-
-      setLastSearches((current) => {
-        return isNewWoeid ? [...current, { title, woeid }] : current;
-      });
-      setWeather(weather);
-      setOpenPannel(false);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-      setSearchText("");
-    }
+  async function handleSearch(searchText: string) {
+    dispatch(weatherActions.SEARCH_WEATHER(searchText));
+    setSearchText("");
+    // TO DO: implement below code in Redux
+    // setOpenPannel(false);
   }
 
   return (
@@ -101,16 +58,13 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
           className={`${
             loading ? "bg-secondary animate-pulse" : ""
           } px-4 bg-blue-700 hover:bg-blue-900 transition`}
-          onClick={async () =>
-            getWeatherByWoeid(await handleSearch(searchText))
-          }
+          onClick={() => handleSearch(searchText)}
           disabled={loading}
         >
           {loading ? "Loading" : "Search"}
         </button>
       </div>
       <ul className="space-y-4">
-        {/* Last searches. Example below */}
         {searchText &&
           cities
             .filter((city) =>
@@ -119,9 +73,10 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
             .map((city) => (
               <li
                 role="button"
-                onClick={async () => {
+                key={city}
+                onClick={() => {
                   setSearchText(city);
-                  getWeatherByWoeid(await handleSearch(city));
+                  handleSearch(city);
                 }}
                 className="border bg-primary border-medium-gray text-medium-gray py-3 hover:border-light-gray hover:text-light-gray"
               >
@@ -130,10 +85,13 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
             ))}
         {!lastSearches.length && <p>Type some City</p>}
         {!searchText &&
-          lastSearchesToDisplay.map(({ title, woeid }) => (
+          lastSearchesForHint.map(({ title, woeid }) => (
             <li
               role="button"
-              onClick={async () => await getWeatherByWoeid({ title, woeid })}
+              key={woeid}
+              onClick={() =>
+                dispatch(weatherActions.GET_WEATHER_BY_WOEID({ title, woeid }))
+              }
               className="border border-medium-gray text-medium-gray py-3 hover:border-light-gray hover:text-light-gray"
             >
               {title}
