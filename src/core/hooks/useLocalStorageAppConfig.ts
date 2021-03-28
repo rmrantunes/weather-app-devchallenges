@@ -1,7 +1,5 @@
-import { TemperatureMeasurements } from "contexts/TemperatureMeasurementContext";
-
 export interface LocalStorageAppConfig {
-  measurement?: TemperatureMeasurements;
+  measurement?: any;
   colorScheme?: "light" | "dark";
 }
 
