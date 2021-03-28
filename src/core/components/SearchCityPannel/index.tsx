@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from "react";
 import { MetaWeatherSearchResponse } from "src/adapters/metaweather-api-definitions";
-import { WeatherContext } from "contexts/WeatherContext";
-import { cities } from "utils/searchCityHint";
+import { WeatherContext } from "src/core/contexts/WeatherContext";
+import { cities } from "src/utils/searchCityHint";
 import { FiSearch, FiX } from "react-icons/fi";
 import axios from "axios";
 

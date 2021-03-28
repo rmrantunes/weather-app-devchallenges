@@ -1,4 +1,4 @@
-import { useLocalStorage, useLocalStorageAppConfig } from "hooks";
+import { useLocalStorage } from "src/core/hooks";
 import React, {
   createContext,
   useContext,

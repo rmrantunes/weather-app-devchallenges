@@ -1,4 +1,4 @@
-import { useTemperatureMeasurementContext } from "contexts/TemperatureMeasurementContext";
+import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import React from "react";
 
 const toggleActive = (condition: boolean) => {

@@ -1,4 +1,4 @@
-import { WeatherContext } from "contexts/WeatherContext";
+import { WeatherContext } from "src/core/contexts/WeatherContext";
 import React, { useContext } from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import { TodaysHighlightsCard } from "./TodaysHighlightsCard";

@@ -1,9 +1,9 @@
-import { WeatherContext } from "contexts/WeatherContext";
-import { useTemperatureMeasurementContext } from "contexts/TemperatureMeasurementContext";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useState } from "react";
+import { WeatherContext } from "src/core/contexts/WeatherContext";
+import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import { MdGpsFixed, MdKeyboardArrowDown, MdLocationOn } from "react-icons/md";
-import { convertToHumanDate, handleTemperatureConversion } from "utils";
-import { SearchCityPannel } from "components/SearchCityPannel";
+import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
+import { SearchCityPannel } from "src/core/components/SearchCityPannel";
 
 export const TodaysWeather = () => {
   const { weather } = useContext(WeatherContext);
