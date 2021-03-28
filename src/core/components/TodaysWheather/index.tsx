@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-import { WeatherContext } from "src/core/contexts/WeatherContext";
 import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import { MdGpsFixed, MdKeyboardArrowDown, MdLocationOn } from "react-icons/md";
 import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
 import { SearchCityPannel } from "src/core/components/SearchCityPannel";
+import { useSelector } from "react-redux";
+import { selectWeather } from "src/store";
 
 export const TodaysWeather = () => {
-  const { weather } = useContext(WeatherContext);
+  const { weather } = useSelector(selectWeather);
   const { consolidated_weather, title } = weather;
   const [todaysWeather] = consolidated_weather;
   const { isCelcius } = useTemperatureMeasurementContext();

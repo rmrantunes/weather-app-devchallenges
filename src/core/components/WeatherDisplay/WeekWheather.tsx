@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import Image from "next/image";
-import { WeatherContext } from "src/core/contexts/WeatherContext";
 import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
 import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
+import { useSelector } from "react-redux";
+import { selectWeather } from "src/store";
 
 const WeekWheather = () => {
   const {
     weather: { consolidated_weather },
-  } = useContext(WeatherContext);
+  } = useSelector(selectWeather);
 
   const { isCelcius } = useTemperatureMeasurementContext();
 

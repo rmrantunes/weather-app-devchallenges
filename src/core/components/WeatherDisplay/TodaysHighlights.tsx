@@ -1,12 +1,13 @@
-import { WeatherContext } from "src/core/contexts/WeatherContext";
 import React, { useContext } from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import { TodaysHighlightsCard } from "./TodaysHighlightsCard";
+import { selectWeather } from "src/store";
+import { useSelector } from "react-redux";
 
 const TodaysHighlights = () => {
   const {
     weather: { consolidated_weather },
-  } = useContext(WeatherContext);
+  } = useSelector(selectWeather);
   const [todaysWeather] = consolidated_weather;
   return (
     <section className="space-y-8">
