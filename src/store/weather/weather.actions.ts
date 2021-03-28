@@ -45,17 +45,17 @@ export const weatherActions = {
     return { type: weatherActionTypes.SEARCH_WEATHER_ERROR, payload: error };
   },
   GET_WEATHER_BY_WOEID(payload: { woeid: number; title: string }) {
-    try {
-      return async function (dispatch) {
+    return async function (dispatch) {
+      try {
         const { data } = await axios.get<MetaWeatherAPIResponse>(
           `/api/location/${payload.woeid}`
         );
         dispatch(weatherActions.SET_WEATHER(data));
         dispatch(weatherActions.SET_LAST_SEARCHES(payload));
-      };
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        dispatch(weatherActions.SEARCH_WEATHER_ERROR(error.message));
+      }
+    };
   },
   SET_LAST_SEARCHES(payload: { woeid: number; title: string }) {
     return { type: weatherActionTypes.SET_LAST_SEARCHES, payload };
