@@ -1,11 +1,11 @@
 import React from "react";
 
-import { MetaWeatherAPIResponse } from "adapters/metaweather-api-definitions";
-import { Layout } from "components/Layout";
-import { TodaysWeather } from "components/TodaysWheather";
-import { WeatherDisplay } from "components/WeatherDisplay";
-import { WeatherProvider } from "contexts/WeatherContext";
-import { TemperatureMeasurementProvider } from "contexts/TemperatureMeasurementContext";
+import { MetaWeatherAPIResponse } from "src/adapters/metaweather-api-definitions";
+import { Layout } from "src/core/components/Layout";
+import { TodaysWeather } from "src/core/components/TodaysWheather";
+import { WeatherDisplay } from "src/core/components/WeatherDisplay";
+import { WeatherProvider } from "src/core/contexts/WeatherContext";
+import { TemperatureMeasurementProvider } from "src/core/contexts/TemperatureMeasurementContext";
 
 interface IHomeProps {
   weatherStaticProp: MetaWeatherAPIResponse;

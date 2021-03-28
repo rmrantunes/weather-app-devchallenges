@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import { WeatherContext } from "contexts/WeatherContext";
-import { convertToHumanDate, handleTemperatureConversion } from "utils";
-import { useTemperatureMeasurementContext } from "contexts/TemperatureMeasurementContext";
+import { WeatherContext } from "src/core/contexts/WeatherContext";
+import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
+import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 
 const WeekWheather = () => {
   const {

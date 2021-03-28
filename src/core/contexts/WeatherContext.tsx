@@ -1,4 +1,4 @@
-import { MetaWeatherAPIResponse } from "adapters/metaweather-api-definitions";
+import { MetaWeatherAPIResponse } from "src/adapters/metaweather-api-definitions";
 import React, {
   createContext,
   Dispatch,

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import { MetaWeatherSearchResponse } from "adapters/metaweather-api-definitions";
+import { MetaWeatherSearchResponse } from "src/adapters/metaweather-api-definitions";
 import { WeatherContext } from "contexts/WeatherContext";
 import { cities } from "utils/searchCityHint";
 import { FiSearch, FiX } from "react-icons/fi";
