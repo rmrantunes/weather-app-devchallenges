@@ -1,36 +1,31 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { cities } from "src/utils/searchCityHint";
 import { FiSearch, FiX } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWeather, weatherActions } from "src/store";
+import { selectUI, selectWeather, UIActions, weatherActions } from "src/store";
 
-export interface ISearchCityPannel {
-  openPannel: boolean;
-  setOpenPannel: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
-  openPannel,
-  setOpenPannel,
-}) => {
+export const SearchCityPannel = () => {
   const [searchText, setSearchText] = useState("");
   const { loading, lastSearches } = useSelector(selectWeather);
+  const { searchPannel } = useSelector(selectUI);
   const dispatch = useDispatch();
   const lastSearchesForHint = useMemo(() => lastSearches.reverse(), [
     lastSearches,
   ]);
 
+  function closePannel() {
+    dispatch(UIActions.CLOSE_SEARCH_PANNEL());
+  }
+
   async function handleSearch(searchText: string) {
     dispatch(weatherActions.SEARCH_WEATHER(searchText));
     setSearchText("");
-    // TO DO: implement below code in Redux
-    // setOpenPannel(false);
   }
 
   return (
     <section
       className={`${
-        openPannel ? "block" : "hidden"
+        searchPannel ? "block" : "hidden"
       } absolute overflow-y-scroll inset-0  py-10 px-11 bg-primary flex flex-col space-y-8 text-center w-full`}
     >
       <div className="flex justify-end">
@@ -39,7 +34,7 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
           className="p-1"
           aria-label="Close search pannel"
           title="Close search pannel"
-          onClick={() => setOpenPannel(false)}
+          onClick={closePannel}
         >
           <FiX size={32} />
         </button>
@@ -89,9 +84,14 @@ export const SearchCityPannel: React.FC<ISearchCityPannel> = ({
             <li
               role="button"
               key={woeid}
-              onClick={() =>
-                dispatch(weatherActions.GET_WEATHER_BY_WOEID({ title, woeid }))
-              }
+              onClick={() => {
+                {
+                  dispatch(
+                    weatherActions.GET_WEATHER_BY_WOEID({ title, woeid })
+                  );
+                  setSearchText("");
+                }
+              }}
               className="border border-medium-gray text-medium-gray py-3 hover:border-light-gray hover:text-light-gray"
             >
               {title}

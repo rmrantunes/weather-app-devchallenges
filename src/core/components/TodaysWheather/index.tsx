@@ -1,27 +1,27 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { useTemperatureMeasurementContext } from "src/core/contexts/TemperatureMeasurementContext";
 import { MdGpsFixed, MdKeyboardArrowDown, MdLocationOn } from "react-icons/md";
 import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
 import { SearchCityPannel } from "src/core/components/SearchCityPannel";
-import { useSelector } from "react-redux";
-import { selectWeather } from "src/store";
+import { useDispatch, useSelector } from "react-redux";
+import { selectWeather, UIActions } from "src/store";
 
 export const TodaysWeather = () => {
   const { weather } = useSelector(selectWeather);
   const { consolidated_weather, title } = weather;
   const [todaysWeather] = consolidated_weather;
   const { isCelcius } = useTemperatureMeasurementContext();
-  const [openPannel, setOpenPannel] = useState(false);
+  const dispath = useDispatch();
 
   return (
     <section className="relative py-10 px-11 min-h-screen bg-primary w-full xl:w-112">
-      <SearchCityPannel {...{ openPannel, setOpenPannel }} />
+      <SearchCityPannel />
       <div className="flex flex-col justify-between space-y-20 text-center w-full">
         <header className="flex justify-between items-center">
           <button
             type="button"
             className="bg-secondary px-5 py-2 shadow-2xl"
-            onClick={() => setOpenPannel(true)}
+            onClick={() => dispath(UIActions.OPEN_SEARCH_PANNEL())}
           >
             Search for places
           </button>
