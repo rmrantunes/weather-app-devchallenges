@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import Image from "next/image";
-import { WeatherContext } from "contexts/WeatherContext";
-import { convertToHumanDate, handleTemperatureConversion } from "utils";
-import { useTemperatureMeasurementContext } from "contexts/TemperatureMeasurementContext";
+import { convertToHumanDate, handleTemperatureConversion } from "src/utils";
+import { useSelector } from "react-redux";
+import { selectIsCelcius, selectWeather } from "src/store";
 
 const WeekWheather = () => {
   const {
     weather: { consolidated_weather },
-  } = useContext(WeatherContext);
+  } = useSelector(selectWeather);
 
-  const { isCelcius } = useTemperatureMeasurementContext();
+  const isCelcius = useSelector(selectIsCelcius);
 
   return (
     <section className="grid grid-cols-2 lg:grid-cols-5 gap-8">

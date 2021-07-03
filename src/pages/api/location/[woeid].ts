@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "adapters/metaweather-api-definitions";
+import { API_ENDPOINTS } from "src/adapters/metaweather-api-definitions";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 

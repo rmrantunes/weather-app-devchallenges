@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { NextApiRequest, NextApiResponse } from "next";
-import metaWeatherFixture from "adapters/metaweather-fixture.json";
+import metaWeatherFixture from "src/adapters/metaweather-fixture.json";
 
 export default async function helloAPI(
   req: NextApiRequest,
