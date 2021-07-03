@@ -10,6 +10,7 @@ Challenge proposed by [devchallenges](https://devchallenges.io).
 - Typescript
 - Redux
 - Tailwind CSS
+- [MetaWeather API](https://www.metaweather.com/api/)
 
 ## Screenshots
 ### Home
